@@ -1,0 +1,17 @@
+---
+- id: validate
+  name: Packer Validate
+  description: This hook runs `packer validate -syntax-only` on all template files.
+  entry: hooks/validate.sh
+  language: script
+  files: (.+\.json|.+\.hcl)$
+  pass_filenames: true
+  always_run: true
+
+- id: fmt
+  name: Packer Format
+  description: This hook runs `packer fmt --check` on all configuration files.
+  entry: hooks/fmt.sh
+  language: script
+  files: (.+\.hcl)$
+  pass_filenames: true
